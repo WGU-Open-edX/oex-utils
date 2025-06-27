@@ -6,6 +6,7 @@ and combine all sets found in them into a single output file.
 
 import glob
 import ast
+import argparse
 from typing import Dict, Set, Any
 
 def find_matching_files(pattern: str = "*_envs_*.py") -> list:
@@ -107,13 +108,30 @@ def generate_output_file(combined_sets: Dict[str, Set[Any]],
 
 def main():
     """Main function to orchestrate the set combination process."""
-    print("Looking for files matching pattern '*_envs_*.py'...")
+    # Set up command line argument parsing
+    parser = argparse.ArgumentParser(
+        description="Combine sets from Python files matching pattern *_envs_*.py"
+    )
+    parser.add_argument(
+        "-o", "--output",
+        default="combined_sets.py",
+        help="Output filename (default: combined_sets.py)"
+    )
+    parser.add_argument(
+        "-p", "--pattern",
+        default="*_envs_*.py",
+        help="File matching pattern (default: *_envs_*.py)"
+    )
+    
+    args = parser.parse_args()
+    
+    print(f"Looking for files matching pattern '{args.pattern}'...")
     
     # Find matching files
-    matching_files = find_matching_files()
+    matching_files = find_matching_files(args.pattern)
     
     if not matching_files:
-        print("No files found matching the pattern '*_envs_*.py'")
+        print(f"No files found matching the pattern '{args.pattern}'")
         return
     
     print(f"Found {len(matching_files)} matching files:")
@@ -144,10 +162,9 @@ def main():
         print(f"  - {var_name}: {len(var_set)} elements")
     
     # Generate output file
-    output_filename = "combined_sets.py"
-    generate_output_file(combined_sets, matching_files, output_filename)
+    generate_output_file(combined_sets, matching_files, args.output)
     
-    print(f"\nOutput written to: {output_filename}")
+    print(f"\nOutput written to: {args.output}")
 
 if __name__ == "__main__":
     main()
