@@ -4,6 +4,12 @@ Script to dump Django settings for different configurations.
 Compares main branch with feature branch settings.
 
 Compatible with Python 3.11+
+
+requires:
+- Django management command `dump_settings` to be available
+- `diff` command available in the environment for comparison
+- `git` command available for branch switching
+- `click` package available for command-line interface
 """
 
 import os
