@@ -11,8 +11,10 @@
 # Allow specific directories (and specific files/patterns within them as needed)
 !settings_utils/
 !team_utils/
+!intl-modernizer/
 
 # Allow .py, .sh, and .md files in subdirectories
 !**/*.py
 !**/*.sh
 !**/*.md
+!**/*.js
