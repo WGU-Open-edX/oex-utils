@@ -29,9 +29,13 @@ CONFIGS = [
     ("lms.envs.production", "lms/envs/mock.yml"),
     ("lms.envs.tutor.production", "/openedx/config/lms.env.yml"),
     ("lms.envs.tutor.development", "/openedx/config/lms.env.yml"),
+    ("lms.envs.tutor.test", "/openedx/config/lms.env.yml"),
+    ("lms.envs.test_static_optimized", "lms/envs/minimal.yml"),
     ("cms.envs.production", "cms/envs/mock.yml"),
     ("cms.envs.tutor.production", "/openedx/config/cms.env.yml"),
     ("cms.envs.tutor.development", "/openedx/config/cms.env.yml"),
+    ("cms.envs.tutor.test", "/openedx/config/cms.env.yml"),
+    ("cms.envs.test_static_optimized", "cms/envs/minimal.yml"),
 ]
 
 # Output directories (defaults)

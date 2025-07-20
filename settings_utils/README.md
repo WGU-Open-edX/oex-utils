@@ -21,28 +21,37 @@ SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.production LMS_CFG=lms/envs/
 SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.production LMS_CFG=lms/envs/mock.yml ./manage.py lms dump_settings > {branch_dump_dir}/lms.envs.production__lms_envs_mock.json
 SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.tutor.production LMS_CFG=/openedx/config/lms.env.yml ./manage.py lms dump_settings > {branch_dump_dir}/lms.envs.tutor.production__openedx_config_lms.json
 SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.tutor.development LMS_CFG=/openedx/config/lms.env.yml ./manage.py lms dump_settings > {branch_dump_dir}/lms.envs.tutor.development__openedx_config_lms.json
+SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.tutor.test LMS_CFG=/openedx/config/lms.env.yml ./manage.py lms dump_settings > {branch_dump_dir}/lms.envs.tutor.test__openedx_config_lms.json
+SERVICE_VARIANT=lms DJANGO_SETTINGS_MODULE=lms.envs.tutor.test_static_optimized LMS_CFG=/openedx/config/lms.env.yml ./manage.py lms dump_settings > {branch_dump_dir}/lms.envs.tutor.test_static_optimized__openedx_config_lms.json
 
 # cms
 SERVICE_VARIANT=cms DJANGO_SETTINGS_MODULE=cms.envs.production CMS_CFG=cms/envs/mock.yml ./manage.py cms dump_settings > {branch_dump_dir}/cms.envs.production__cms_envs_mock.json
 SERVICE_VARIANT=cms DJANGO_SETTINGS_MODULE=cms.envs.tutor.production CMS_CFG=/openedx/config/cms.env.yml ./manage.py cms dump_settings > {branch_dump_dir}/cms.envs.tutor.production__openedx_config_cms.json
 SERVICE_VARIANT=cms DJANGO_SETTINGS_MODULE=cms.envs.tutor.development CMS_CFG=/openedx/config/cms.env.yml ./manage.py cms dump_settings > {branch_dump_dir}/cms.envs.tutor.development__openedx_config_cms.json
+SERVICE_VARIANT=cms DJANGO_SETTINGS_MODULE=cms.envs.tutor.test CMS_CFG=/openedx/config/cms.env.yml ./manage.py cms dump_settings > {branch_dump_dir}/cms.envs.tutor.test__openedx_config_cms.json
+SERVICE_VARIANT=cms DJANGO_SETTINGS_MODULE=cms.envs.tutor.test_static_optimized CMS_CFG=/openedx/config/cms.env.yml ./manage.py cms dump_settings > {branch_dump_dir}/cms.envs.tutor.test_static_optimized__openedx_config_cms.json
 ```
 
 And here is a table of the variables involved:
 
 ```
-|-----------------+----------------------------+-----------------------------+------------------------------------------------|
-| SERVICE_VARIANT | DJANGO_SETTINGS_MODULE     | {SERVICE}_CFG               | output file (.json)                            |
-|-----------------+----------------------------+-----------------------------+------------------------------------------------|
-| lms             | lms.envs.production        | lms/envs/minimal.yml        | lms.envs.production__lms_envs_minimal          |
-| lms             | lms.envs.production        | lms/envs/mock.yml           | lms.envs.production__lms_envs_mock             |
-| lms             | lms.envs.tutor.production  | /openedx/config/lms.env.yml | lms.envs.production__lms_envs_mock             |
-| lms             | lms.envs.tutor.development | /openedx/config/lms.env.yml | lms.envs.tutor.development__openedx_config_lms |
-|-----------------+----------------------------+-----------------------------+------------------------------------------------|
-| cms             | cms.envs.production        | cms/envs/mock.yml           | cms.envs.production__cms_envs_mock             |
-| cms             | cms.envs.tutor.production  | /openedx/config/cms.env.yml | cms.envs.tutor.production__openedx_config_cms  |
-| cms             | cms.envs.tutor.development | /openedx/config/cms.env.yml | cms.envs.tutor.development__openedx_config_cms |
-|-----------------+----------------------------+-----------------------------+------------------------------------------------|
+|-----------------+--------------------------------------+-----------------------------+----------------------------------------------------------|
+| SERVICE_VARIANT | DJANGO_SETTINGS_MODULE               | {SERVICE}_CFG               | output file (.json)                                      |
+|-----------------+--------------------------------------+-----------------------------+----------------------------------------------------------|
+| lms             | lms.envs.production                  | lms/envs/minimal.yml        | lms.envs.production__lms_envs_minimal                    |
+| lms             | lms.envs.production                  | lms/envs/mock.yml           | lms.envs.production__lms_envs_mock                       |
+| lms             | lms.envs.tutor.production            | /openedx/config/lms.env.yml | lms.envs.production__lms_envs_mock                       |
+| lms             | lms.envs.tutor.development           | /openedx/config/lms.env.yml | lms.envs.tutor.development__openedx_config_lms           |
+| lms             | lms.envs.tutor.test                  | /openedx/config/lms.env.yml | lms.envs.tutor.test__openedx_config_lms                  |
+| lms             | lms.envs.tutor.test_static_optimized | /openedx/config/lms.env.yml | lms.envs.tutor.test_static_optimized__openedx_config_lms |
+|-----------------+--------------------------------------+-----------------------------+----------------------------------------------------------|
+| cms             | cms.envs.production                  | cms/envs/mock.yml           | cms.envs.production__cms_envs_mock                       |
+| cms             | cms.envs.tutor.production            | /openedx/config/cms.env.yml | cms.envs.tutor.production__openedx_config_cms            |
+| cms             | cms.envs.tutor.development           | /openedx/config/cms.env.yml | cms.envs.tutor.development__openedx_config_cms           |
+| cms             | cms.envs.tutor.test                  | /openedx/config/cms.env.yml | cms.envs.tutor.test__openedx_config_cms                  |
+| cms             | cms.envs.tutor.test_static_optimized | /openedx/config/cms.env.yml | cms.envs.tutor.test_static_optimized__openedx_config_cms |
+|-----------------+--------------------------------------+-----------------------------+----------------------------------------------------------|
+
 ```
 
 ### `extract_django_settings.py`
